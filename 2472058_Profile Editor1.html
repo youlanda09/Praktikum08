@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Profile Card Editor-2472058</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background-color: #f3f3f3;
+    }
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      width: 300px;
+      text-align: center;
+    }
+    .card img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+    input {
+      width: 100%;
+      padding: 8px;
+      margin: 5px 0;
+      box-sizing: border-box;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: none;
+      border-radius: 5px;
+      color: white;
+      cursor: pointer;
+    }
+    .update {
+      background-color: #28a745;
+    }
+    .reset {
+      background-color: #6c757d;
+    }
+  </style>
+</head>
+<body>
+
+<div class="card">
+  <h2>Profile Card Editor</h2>
+  <img id="profile-pic" src="" alt="Profile Picture">
+  <h3 id="name">John Doe</h3>
+  <p id="bio">Web Developer</p>
+  
+  <input type="text" id="newName" placeholder="Enter new name">
+  <input type="text" id="newBio" placeholder="Enter new bio">
+  <input type="text" id="newImg" placeholder="Enter image URL">
+  
+  <button class="update" onclick="updateProfile()">Update Profile</button>
+  <button class="reset" onclick="resetProfile()">Reset</button>
+</div>
+
+<script>
+  function updateProfile() {
+    document.getElementById("name").innerText = document.getElementById("newName").value;
+    document.getElementById("bio").innerText = document.getElementById("newBio").value;
+    document.getElementById("profile-pic").src = document.getElementById("newImg").value;
+  }
+
+  function resetProfile() {
+    document.getElementById("name").innerText = "John Doe";
+    document.getElementById("bio").innerText = "Web Developer";
+    document.getElementById("profile-pic").src = "";
+    
+    document.getElementById("newName").value = "";
+    document.getElementById("newBio").value = "";
+    document.getElementById("newImg").value = "";
+  }
+</script>
+
+</body>
+</html>
