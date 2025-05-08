@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Suit-2472058</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: burlywood;
+      
+    }
+
+    .game-box {
+      display: flex;
+      justify-content: center;
+      margin-top: 30px;
+    }
+
+    .player-box, .computer-box {
+      margin: 0 20px;
+      display: flex;
+      flex-direction: column;
+     align-items: center;
+    }
+
+    .vs-text {
+        font-size: 32px;
+        font-weight: bold;
+        margin: 0 20px;
+        display: flex;
+        align-items: center;
+    }
+
+    .result {
+      font-weight: bold;
+      font-size: 20px;
+      margin-top: 20px;
+    }
+
+    .win { color: red; }
+    .lose { color: blue; }
+    .draw { color: firebrick; }
+
+    img {
+      width: 100px;
+      padding: 0;       
+      margin: 0;         
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+  <script>
+    function mainGame() {
+      let userInput = prompt("Suit!\nMasukkan angka bulat (1-9):");
+
+      if (!userInput || isNaN(userInput) || userInput < 1 || userInput > 9) {
+        alert("Input harus angka dari 1 sampai 9.");
+        return;
+      }
+
+      let userNumber = parseInt(userInput);
+      let computerNumber = Math.floor(Math.random() * 9) + 1;
+
+      let resultText = '';
+      let resultClass = '';
+      if (userNumber > computerNumber) {
+        resultText = "PLAYER WIN";
+        resultClass = "win";
+      } else if (userNumber < computerNumber) {
+        resultText = "PLAYER LOSE";
+        resultClass = "lose";
+      } else {
+        resultText = "DRAW";
+        resultClass = "draw";
+      }
+
+      document.body.innerHTML += `
+        <div class="game-box">
+          <div class="player-box">
+            <div>PLAYER</div>
+            <img src="img/${userNumber}.jpg" alt="${userNumber}">
+          </div>
+          <div class="vs-text">VS</div>
+          <div class="computer-box">
+            <div>COMPUTER</div>
+            <img src="img/${computerNumber}.jpg" alt="${computerNumber}">
+          </div>
+        </div>
+        <div class="result ${resultClass}">${resultText}</div>
+      `;
+    }
+    window.onload = mainGame;
+  </script>
+
+</body>
+</html>
